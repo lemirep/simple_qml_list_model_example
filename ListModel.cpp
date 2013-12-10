@@ -169,11 +169,23 @@ QVariant    Models::ListModel::data(const QModelIndex &index, int role) const
 }
 
 /*!
+ * Sets the data element specified by \a role to \a value
+ */
+
+bool    Models::ListModel::setData(const QModelIndex &index, const QVariant &value, int role)
+{
+    if (index.row() >= 0 && index.row() < this->items.size())
+        return this->items.at(index.row())->setData(role, value);
+    return false;
+}
+
+
+/*!
  * Returns a hash containing the roleNames of the Model.
  */
 QHash<int, QByteArray>  Models::ListModel::roleNames() const
 {
-        return this->prototype->roleNames();
+    return this->prototype->roleNames();
 }
 
 /*!

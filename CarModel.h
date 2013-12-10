@@ -23,6 +23,7 @@ public:
 public:
     int id() const;
     QVariant data(int role) const;
+    bool setData(int role, const QVariant &value);
     QHash<int, QByteArray> roleNames() const;
 
 private:
@@ -30,6 +31,7 @@ private:
     QString name;
     QString brand;
     int     price;
+
 };
 
 #endif // CARMODEL_H

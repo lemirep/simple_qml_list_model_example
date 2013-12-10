@@ -34,6 +34,14 @@ Rectangle {
                    anchors.verticalCenter : parent.verticalCenter
                    text : model.car_brand
                }
+               MouseArea
+               {
+                   anchors.fill: parent
+                   onClicked:
+                   {
+                       model.car_price += 1
+                   }
+               }
            }
         }
     }

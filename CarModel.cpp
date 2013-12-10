@@ -1,5 +1,5 @@
 #include "CarModel.h"
-
+#include <QDebug>
 // USE THIS CONSTRUCTOR ONLY TO PROVIDE PROTOTYPE FOR MODEL CONSTRUCTOR
 CarModel::CarModel(QObject *parent) : Models::ListItem(parent)
 {
@@ -32,6 +32,31 @@ QVariant CarModel::data(int role) const
         return this->id();
     default :
         QVariant();
+    }
+}
+
+bool CarModel::setData(int role, const QVariant &value)
+{
+    switch(role)
+    {
+    case car_name:
+        this->name = value.toString();
+        // TO REFRESH MODEL
+        this->triggerItemUpdate();
+        return true;
+    case car_brand:
+        this->brand = value.toString();
+        // TO REFRESH MODEL
+        this->triggerItemUpdate();
+        return true;
+    case car_price:
+        this->price = value.toInt();
+        // TO REFRESH MODEL
+        qDebug() << "Price Changed" << this->price;
+        this->triggerItemUpdate();
+        return true;
+    default :
+        return false;
     }
 }
 
