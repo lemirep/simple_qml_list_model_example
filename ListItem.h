@@ -16,7 +16,7 @@ public :
     virtual ~ListItem() {}
     virtual int id() const = 0;
     virtual QVariant data(int role) const = 0;
-    virtual bool     setData(int role, const QVariant &value) = 0;
+    virtual bool     setData(int role, const QVariant &value) {Q_UNUSED(role);Q_UNUSED(value)}
     virtual QHash<int, QByteArray> roleNames() const = 0;
     virtual void triggerItemUpdate() {emit dataChanged();}
     virtual bool operator<(const ListItem &nextElem) {Q_UNUSED(nextElem); return false;}

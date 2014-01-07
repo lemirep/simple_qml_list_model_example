@@ -6,6 +6,13 @@
 class CarModel : public Models::ListItem
 {
     Q_OBJECT
+
+
+    Q_PROPERTY(QString carName WRITE setCarName CONSTANT)
+    Q_PROPERTY(QString carBrand WRITE setCarBrand CONSTANT)
+    Q_PROPERTY(int carPrice WRITE setCarPrice CONSTANT)
+
+
 public:
     explicit CarModel(QObject *parent = NULL);
     explicit CarModel(int id, const QString &name, const QString &brand, int price, QObject *parent = NULL);
@@ -25,6 +32,10 @@ public:
     QVariant data(int role) const;
     bool setData(int role, const QVariant &value);
     QHash<int, QByteArray> roleNames() const;
+
+    void setCarName(const QString &carName);
+    void setCarBrand(const QString &carBrand);
+    void setCarPrice(int price);
 
 private:
     int     carId;

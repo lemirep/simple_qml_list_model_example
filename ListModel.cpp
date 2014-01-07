@@ -188,6 +188,14 @@ QHash<int, QByteArray>  Models::ListModel::roleNames() const
     return this->prototype->roleNames();
 }
 
+void Models::ListModel::appendRowFromQml(QObject *item)
+{
+    // QML can only send QObject *instances so we have to check if the item is a ListItem
+    ListItem *listItem = NULL;
+    if ((listItem = reinterpret_cast<Models::ListItem *>(item)) != NULL)
+        this->appendRow(listItem);
+}
+
 /*!
  * Returns the ListItem contained at \a row if it has been specified.
  * Otherwise the first ListItem is returned.

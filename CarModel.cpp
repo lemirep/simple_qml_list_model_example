@@ -71,3 +71,18 @@ QHash<int, QByteArray> CarModel::roleNames() const
     return roles;
 }
 
+void CarModel::setCarName(const QString &carName)
+{
+    this->name = carName;
+}
+
+void CarModel::setCarBrand(const QString &carBrand)
+{
+    this->brand = carBrand;
+}
+
+void CarModel::setCarPrice(int price)
+{
+    this->price = price;
+}
+

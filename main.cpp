@@ -1,6 +1,7 @@
 #include <QtGui/QGuiApplication>
 #include <QQuickView>
 #include <QQmlContext>
+#include <QtQml>
 #include "ListModel.h"
 #include "CarModel.h"
 
@@ -10,7 +11,7 @@ int main(int argc, char *argv[])
     QQuickView *viewer = new QQuickView();
     QQmlContext *context = viewer->rootContext();
 
-
+    qmlRegisterType<CarModel>("org.qtproject.models", 1, 0, "Car");
     Models::ListModel *carModel = new Models::ListModel(new CarModel());
 
     carModel->appendRow(new CarModel(0, "Corvette", "Chevrolet", 50000));

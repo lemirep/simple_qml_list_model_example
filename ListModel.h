@@ -30,6 +30,7 @@ public:
     bool                    setData(const QModelIndex &index, const QVariant &value, int role);
     QHash<int, QByteArray>  roleNames() const;
 
+    Q_INVOKABLE void        appendRowFromQml(QObject *item);
     void                    appendRow(ListItem *item);
     void                    appendRows(QList<ListItem *> &items);
     void                    insertRow(int row, ListItem *item);
